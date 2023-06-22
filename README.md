@@ -2,7 +2,7 @@
 
 Проект из курса [Верстка интернет магазина с нуля до завершения, HTML/CSS/JS](https://www.udemy.com/course/htmlcssjs/). 
 
-[Деплой на Heroku](https://drive-moto-store.herokuapp.com/)
+[Деплой на Vercel](https://drive-moto-store.vercel.app)
 
 **3-х страничный интернет магазин в котором реализованы:**
 
