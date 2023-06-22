@@ -26,7 +26,7 @@ export default function mailForm(formSelector, inputSelector) {
 
       const json = JSON.stringify(Object.fromEntries(formData.entries()));
 
-      postData("http://localhost:3000/requests", json)
+      postData("https://drivemoto-store.onrender.com/requests", json)
         .then((res) => {
           console.log(res);
         })

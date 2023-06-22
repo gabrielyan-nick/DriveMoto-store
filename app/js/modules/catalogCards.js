@@ -53,7 +53,7 @@ export default function catalogCards() {
       sortByPriceToLowBtn.addEventListener("click", () => sortByPrice("toLow"));
 
       function sortByPrice(dir) {
-        getResource("http://localhost:3001/catalog-cards").then((data) => {
+        getResource("https://drivemoto-store.onrender.com/catalog-cards").then((data) => {
           let arr = Array.from(data);
 
           if (dir === "toHigth") {
@@ -310,7 +310,7 @@ export default function catalogCards() {
     }
   }
 
-  getResource("http://localhost:3001/catalog-cards").then((data) => {
+  getResource("https://drivemoto-store.onrender.com/catalog-cards").then((data) => {
     data.forEach(({ img, title, price, classes }) => {
       new CatalogCard(img, title, price, classes).render();
     });
