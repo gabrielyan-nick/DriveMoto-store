@@ -1,3 +1,5 @@
+import { SERVER_URL } from "../const.js";
+
 export default function mailForm(formSelector, inputSelector) {
   const form = document.querySelectorAll(formSelector);
   const input = document.querySelectorAll(inputSelector);
@@ -21,12 +23,12 @@ export default function mailForm(formSelector, inputSelector) {
     item.addEventListener("submit", (event) => {
       event.preventDefault();
       event.stopPropagation();
-     
+
       const formData = new FormData(item);
 
       const json = JSON.stringify(Object.fromEntries(formData.entries()));
 
-      postData("https://drivemoto-store.onrender.com/requests", json)
+      postData(`${SERVER_URL}/requests`, json)
         .then((res) => {
           console.log(res);
         })

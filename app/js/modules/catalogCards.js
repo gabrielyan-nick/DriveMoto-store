@@ -1,5 +1,6 @@
 import { getResource } from "../services/requests.js";
 import { favoriteAdd, favoriteRemove } from "./favorite.js";
+import { SERVER_URL } from "../const.js";
 
 // Функция создает 2 массива: notAvailableArr (нет в наличии) и inStockArr (в наличии). После получения данных
 // с сервера метод render() создает карту товара и помещает ее в один из массивов.
@@ -53,7 +54,7 @@ export default function catalogCards() {
       sortByPriceToLowBtn.addEventListener("click", () => sortByPrice("toLow"));
 
       function sortByPrice(dir) {
-        getResource("https://drivemoto-store.onrender.com/catalog-cards").then((data) => {
+        getResource(`${SERVER_URL}/catalog-cards`).then((data) => {
           let arr = Array.from(data);
 
           if (dir === "toHigth") {
@@ -310,14 +311,16 @@ export default function catalogCards() {
     }
   }
 
-  getResource("https://drivemoto-store.onrender.com/catalog-cards").then((data) => {
-    data.forEach(({ img, title, price, classes }) => {
-      new CatalogCard(img, title, price, classes).render();
-    });
-    concatArr();
-    catalogRender(cardsArr, cardsPerPage, currentPage);
-    pagination();
-    catalogGroup();
-    favoriteAdd("popular__item-favorite");
-  });
+  getResource(`${SERVER_URL}/catalog-cards`).then(
+    (data) => {
+      data.forEach(({ img, title, price, classes }) => {
+        new CatalogCard(img, title, price, classes).render();
+      });
+      concatArr();
+      catalogRender(cardsArr, cardsPerPage, currentPage);
+      pagination();
+      catalogGroup();
+      favoriteAdd("popular__item-favorite");
+    }
+  );
 }
